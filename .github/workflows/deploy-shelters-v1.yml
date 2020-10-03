@@ -1,0 +1,31 @@
+name: 避難所一覧API (v1) のデプロイ
+on: push
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '12'
+      - name: yarnのキャッシュディレクトリパスを取得
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: 依存関係のインストール
+        run: yarn workspace shelters-v1 install --frozen-lockfile
+      - name: リソースのビルド
+        run: yarn workspace shelters-v1 build
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          cname: api.chiba-shelters.lollipop-onl
+          keep_files: true
