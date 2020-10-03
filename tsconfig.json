@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "esnext"],
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "noEmit": true
+  },
+  "include": ["workspaces/**/*"],
+  "exclude": ["node_modules"]
+}
