@@ -2,6 +2,10 @@
 
 ## 避難所一覧
 
+### Source
+
+[千葉市：指定緊急避難場所・指定避難所・広域避難場所に関する情報](https://www.city.chiba.jp/somu/bosai/hinanbasyoichiran.html)
+
 ### Endpoint
 
 https://api.chiba-shelters.lollipop-onl/v1/shelters.json
