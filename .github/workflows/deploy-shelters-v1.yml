@@ -22,7 +22,7 @@ jobs:
       - name: 依存関係のインストール
         run: yarn workspace shelters-v1 install --frozen-lockfile
       - name: リソースのビルド
-        run: yarn workspace shelters-v1 build
+        run: yarn workspace shelters-v1 start
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

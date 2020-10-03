@@ -16,7 +16,7 @@ https://api.chiba-shelters.lollipop-onl/v1/shelters.json
 type Response = {
   // APIのバージョン (v1.x)
   version: string;
-  // 最終更新日 (YYYY-MM-DDTHH:mm:ssZ)
+  // 最終更新日 (YYYY-MM-DDTHH:mm:ss.sssZ)
   updatedAt: string;
   // 避難所一覧
   shelters: Array<{
@@ -36,8 +36,8 @@ type Response = {
       longitude: number;
     }
   }>;
-  // 避難所種別
-  types: Array<{
+  // 避難所種別一覧
+  shelterTypes: Array<{
     // 識別子
     id: 0 | 1 | 2 | 3;
     // 名称
@@ -52,7 +52,9 @@ type Response = {
 
 避難所種別は次のテーブルに示す値を取ります。
 
-|types[].id|types[].name|types[].description|
+**Note: id と名称・説明文との紐付けは保証されません。**
+
+|shelterTypes[].id|shelterTypes[].name|shelterTypes[].description|
 |:--|:--|:--|
 |`0`|避難場所|災害が発生して一時的な避難が必要なときに、身の安全を確保する場所|
 |`1`|避難所|被災者の住宅に危険が予想される場合や住宅が損壊した場合など、生活の場が失われた場合に、一時的な生活の本拠地として宿泊滞在するための施設|
